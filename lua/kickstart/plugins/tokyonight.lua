@@ -11,10 +11,26 @@ return {
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
-
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
+  },
+  -- Auto Dark Mode Plugin
+  {
+    'f-person/auto-dark-mode.nvim',
+    opts = {
+      update_interval = 500,
+      set_dark_mode = function()
+        vim.api.nvim_set_option_value('background', 'dark', {})
+        vim.o.background = 'dark'
+        vim.cmd.colorscheme 'tokyonight-night'
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option_value('background', 'light', {})
+        vim.o.background = 'light'
+        vim.cmd.colorscheme 'tokyonight-day'
+      end,
+    },
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
