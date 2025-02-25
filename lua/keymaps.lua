@@ -21,6 +21,9 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 -- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 -- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+-- Remap Diffview's [c and ]c shortcuts to arrow keys so easy jumping from hunk to hunk is possible
+vim.keymap.set('n', '<Up>', '[c', { remap = true, silent = true, desc = 'Go to previous hunk' })
+vim.keymap.set('n', '<Down>', ']c', { remap = true, silent = true, desc = 'Go to next hunk' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
