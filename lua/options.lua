@@ -66,3 +66,11 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 20
 
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Re-enforce relative numbers everytime a new buffer is entered
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.number = true
+    vim.opt.relativenumber = true
+  end,
+})
