@@ -65,6 +65,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
+-- Just scroll 10 lines when using Ctrl-D and Ctrl-U
+vim.o.scroll = 5
+
 -- vim: ts=2 sts=2 sw=2 et
 
 -- Re-enforce relative numbers everytime a new buffer is entered
