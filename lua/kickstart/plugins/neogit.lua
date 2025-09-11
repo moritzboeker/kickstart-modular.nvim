@@ -5,11 +5,21 @@ return {
     'sindrets/diffview.nvim', -- optional
     'nvim-telescope/telescope.nvim', -- optional
   },
-  vim.keymap.set('n', '<leader>ng', ':Neogit<CR>', { silent = true, desc = 'Neogit' }),
-  vim.keymap.set('n', '<leader>df', ':DiffviewOpen<CR>', { silent = true, desc = 'DiffviewOpen' }),
-  vim.keymap.set('n', '<leader>dfc', ':DiffviewClose<CR>', { silent = true, desc = 'DiffviewClose' }),
-  vim.keymap.set('n', '<leader>dfr', ':DiffviewRefresh<CR>', { silent = true, desc = 'DiffviewRefresh' }),
-  vim.keymap.set('n', '<leader>tf', ':DiffviewToggleFiles<CR>', { silent = true, desc = 'DiffviewToggleFiles' }),
-  vim.keymap.set('n', '<leader>fh', ':DiffviewFileHistory<CR>', { silent = true, desc = 'DiffviewFileHistory' }),
-  config = true,
+  keys = {
+    { "<leader>ng", "<cmd>Neogit<CR>", desc = "Neogit" },
+    { "<leader>df", "<cmd>DiffviewOpen<CR>", desc = "DiffviewOpen" },
+    { "<leader>dfc","<cmd>DiffviewClose<CR>", desc = "DiffviewClose" },
+    { "<leader>tf", "<cmd>DiffviewToggleFiles<CR>", desc = "DiffviewToggleFiles" },
+    { "<leader>fh", "<cmd>DiffviewFileHistory<CR>", desc = "DiffviewFileHistory" },
+  },
+  config = function()
+    require("neogit").setup {
+      status = {
+        recent_commit_count = 100,
+      },
+      sections = {
+        recent = { folded = false, hidden = false },
+      },
+    }
+  end,
 }
