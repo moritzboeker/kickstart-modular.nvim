@@ -40,10 +40,10 @@ return {
 
       apply_tokyonight_theme()
 
-      -- Poll for live changes
-      vim.fn.timer_start(1000, function()
-        apply_tokyonight_theme()
-      end, { ["repeat"] = -1 })
+      -- Re-apply when focus is gained
+      vim.api.nvim_create_autocmd("FocusGained", {
+        callback = apply_tokyonight_theme,
+      })
     end,
   },
 }
