@@ -40,6 +40,9 @@ return {
           },
         },
       },
+      {
+        'bi0ha2ard/telescope-ros.nvim',
+      },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -77,12 +80,17 @@ return {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
+          ['ros'] = {
+              colcon = "colcon" -- Must be in $PATH
+              -- colcon = vim.loop.os_homedir() .. "/venvs/colcon/bin/colcon", -- or run directly from a venv
+          },
         },
       }
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'ros')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -124,6 +132,11 @@ return {
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcut for searching ROS packages and find files in selected package 
+      vim.keymap.set('n', '<leader>srf', function()
+        require('telescope').extensions.ros.packages{cwd="/home/moritz/git/dev/nav2_ws/"}
+      end, { desc = '[S]earch [R]OS packages and find files in selected package'})
     end,
   },
 }
