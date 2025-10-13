@@ -28,6 +28,7 @@ require('lazy').setup({
   require 'kickstart/plugins/cmp',
   require 'kickstart/plugins/conform',
   require 'kickstart/plugins/gitsigns',
+  require 'kickstart/plugins/harpoon',
   require 'kickstart/plugins/lspconfig',
   require 'kickstart/plugins/mini',
   require 'kickstart/plugins/neogit',
