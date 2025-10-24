@@ -56,4 +56,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Add more words - which are under the cursor - to the current search
+local f = require('custom.functions.add-word-to-search')
+vim.keymap.set("n", "<leader>*", f.add_word_to_search, { desc = 'Add current word to search' })
 -- vim: ts=2 sts=2 sw=2 et
