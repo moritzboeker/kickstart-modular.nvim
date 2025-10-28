@@ -25,6 +25,7 @@ require('lazy').setup({
 
   require 'kickstart/plugins/autosave',
   require 'kickstart/plugins/avante',
+  require 'kickstart/plugins/dap',
   require 'kickstart/plugins/cmp',
   require 'kickstart/plugins/conform',
   require 'kickstart/plugins/gitsigns',
