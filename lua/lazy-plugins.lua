@@ -24,7 +24,6 @@ require('lazy').setup({
   -- include a plugin definition from file lua/path/name.lua
 
   require 'kickstart/plugins/autosave',
-  require 'kickstart/plugins/avante',
   require 'kickstart/plugins/dap',
   require 'kickstart/plugins/cmp',
   require 'kickstart/plugins/conform',
