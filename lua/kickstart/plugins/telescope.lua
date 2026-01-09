@@ -43,6 +43,9 @@ return {
       {
         'bi0ha2ard/telescope-ros.nvim',
       },
+      {
+        'princejoogie/dir-telescope.nvim',
+      },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -91,6 +94,7 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'ros')
+      pcall(require('telescope').load_extension, 'dir')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -136,7 +140,11 @@ return {
       -- Shortcut for searching ROS packages and find files in selected package 
       vim.keymap.set('n', '<leader>srf', function()
         require('telescope').extensions.ros.packages{cwd="/home/moritz/git/dev/nav2_ws/"}
-      end, { desc = '[S]earch [R]OS packages and find files in selected package'})
+      end, { desc = '[S]earch [R]OS packages and [F]ind files in selected package'})
+
+      -- Shortcut for searching directories and live grep or finding files in selected directory
+      vim.keymap.set("n", "<leader>sdg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true, desc = '[S]earch [D]irectories and live [G]rep in selected directory'})
+      vim.keymap.set("n", "<leader>sdf", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true, desc = '[S]earch [D]irectories and [F]ind files in selected directory'})
     end,
   },
 }
